@@ -82,7 +82,7 @@ async def progress(cur, tot, start_time, status, snt):
 
             progress = round((cur * 100) / tot,2)
 
-            text = f"**{status}**\n\n`{progress}%` done.\n**{curr}MB** of **{tott}MB**\nSpeed: **{speed}MBPS**\nETA: **{eta}**"
+            text = f"**{status}**\n\n`{progress}%` Bajarildi✔.\n**{tott}MB** dan **{curr}MB**\n⏱Tezlik: **{speed}MB/S**\n⌚Qolgan Vaqt: **{eta}**"
 
             await snt.edit_text(text = text)
 
