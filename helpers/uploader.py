@@ -35,7 +35,7 @@ class Uploader:
             if not os.path.isfile(Config.CRED_FILE):
                 self.status = False
                 
-                self.message = "Upload failed because you did not authenticate me."
+                self.message = "📤Meni tasdiqlamaganingiz uchun yuklash amalga oshmadi.✔"
                 
                 return
 
@@ -45,9 +45,9 @@ class Uploader:
 
             properties = dict(
                 title = self.title if self.title else os.path.basename(self.file),
-                description = 'Uploaded to youtube with https://t.me/youtubeitbot',
+                description = 'Uploaded to youtube with https://t.me/YTUpBot',
                 category = 27,
-                privacyStatus = 'private'
+                privacyStatus = 'public'
             )
 
             youtube = Youtube(google)
@@ -58,10 +58,10 @@ class Uploader:
             r = await youtube.upload_video(video = self.file, properties = properties)
 
             self.status = True
-            self.message = f"https://youtu.be/{r['id']}"
+            self.message = f"💿Sizning videongiz muvaffaqiyatli yuklandi \nYouTube havolasi:👇\nhttps://youtu.be/{r['id']}"
         except Exception as e:
             traceback.print_exc()
             self.status = False
-            self.message = f"Error occuered during upload.\nError details: {e}"
+            self.message = f"🚫Yuklash jarayonida xatolik yuz berdi. \nXatolik tafsilotlari: {e}"
         return
 
