@@ -37,6 +37,7 @@ class Uploader:
                 
                 self.message = "📤Meni tasdiqlamaganingiz uchun yuklash amalga oshmadi.✔"
                 
+                
                 return
 
             auth.LoadCredentialsFile(Config.CRED_FILE)
@@ -45,9 +46,11 @@ class Uploader:
 
             properties = dict(
                 title = self.title if self.title else os.path.basename(self.file),
-                description = 'Uploaded to youtube with https://t.me/YTUpBot',
+                description = "🙋Assalomu alaykum Qadirli Kanal Azolari
+Szilar bilan Kamina Jahongir bo'lmoqda. 📅Bugungi Video ham Jida qoziq siz aslo Zerikmaysiz Bizni Kanalimzni kuzatishda Davom Eting.
+😊 Bu yerda siz o'zingizga kerakli narslarni Topasiz.",
                 category = 27,
-                privacyStatus = 'public'
+                privacyStatus = 'private'
             )
 
             youtube = Youtube(google)
@@ -58,7 +61,7 @@ class Uploader:
             r = await youtube.upload_video(video = self.file, properties = properties)
 
             self.status = True
-            self.message = f"💿Sizning videongiz muvaffaqiyatli yuklandi \nYouTube havolasi:👇\nhttps://youtu.be/{r['id']}"
+            self.message = f"💿Sizning videongiz muvaffaqiyatli yuklandi \nYouTube havolasi:👇\nhttps://youtu.be/{r['id']}\n💽Agar Video hajmi Agar Katta bolsa Video Shuncha Sekin Yuklanadi."
         except Exception as e:
             traceback.print_exc()
             self.status = False
